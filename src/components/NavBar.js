@@ -9,7 +9,7 @@ class Navbar extends Component {
                     <a className="navbar-brand col-sm-3 col-md-2 mr-0" style={{color:'white'}} href="https://www.pinterest.com/"> Record HealthCare Data</a>
                     <ul className="navbar-nav pc-3">
                         <li>
-                            <h style={{color: 'green'}}>Account Number:{this.props.account}</h>
+                            <h1 style={{color: 'green'}}>Account Number:{this.props.account}</h1>
                         </li>
                     </ul>
                 </nav>

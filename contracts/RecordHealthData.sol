@@ -60,7 +60,6 @@ contract RecordHealthCare {
         string date;
         string time;
         // For holding medical information related to the appointment.
-
         string description;
         string diagnosis;
         string status;
@@ -137,7 +136,6 @@ contract RecordHealthCare {
         isApproved[msg.sender][msg.sender] = true;
         patientCount++;
     }
-
     // Allows patient to edit their existing record
     function editDetailsPatient(
         string memory _name,
