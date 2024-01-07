@@ -1,14 +1,85 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: ghostwhite;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.App{
+    background-color: #fefefe;
+    height: 100%;
+    width: 100%;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+scroll-behavior: smooth;
+}
+.paddings{
+    padding: 1.5rem;
+}
+.innerWidth{
+    width: 100%;
+}
+.flexCenter{
+    display: flex;
+    row-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.flexStart{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexEnd{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+@media (min-width: 1536px){
+    .innerWidth{
+        max-width: 1280px;
+        margin:auto;
+    }
+}
+@media(min-width:640px){
+    .paddings{
+        padding:4rem;
+    }
+}
+.flexColStart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.flexColEnd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.flexColCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.App{
+    position: relative;
+    overflow-x: clip;
+}
+.App>:nth-child(1){
+    background-color: black;
+    position: relative;
+}
+.white-gradient{
+    position: absolute;
+    width:20rem;
+    height: 20rem;
+    background: rgba(255,255,255,0.522);
+    border-radius: 100px;
+    filter: blur(100px);
+    top: 100px;
+    z-index: 1000;
 }

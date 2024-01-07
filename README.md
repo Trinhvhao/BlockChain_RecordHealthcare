@@ -1,5 +1,3 @@
-### watch the Project Demo by clicking on the below video
-[![Watch the video](https://img.youtube.com/vi/0XCSPLJAwHw/maxresdefault.jpg)](https://youtu.be/0XCSPLJAwHw)
 ### Install the  following applications in your system
  1. Ganache
  2. Metamak (chrome extension)
@@ -103,11 +101,6 @@ This research was supported by Government Engineering College, Raipur and We are
 - “AES”  https://www.educative.io/edpresso/what-is-the-aes-algorithm
 - "How to Build Ethereum Dapp with React.js · Complete Step-By-Step Guide" https://www.dappuniversity.com/articles/ethereum-dapp-react-tutorial
 
-# Developer's details
-
-1. Vishwas Paikra https://github.com/vishwaspaikra007
-2. Satyam Lachhwani https://github.com/Satyam1203
-3. Diksha Verma https://github.com/dikshaverma011
 
 
 

@@ -1,9 +1,5 @@
-const PatientData = artifacts.require("PatientData");
-const SaveData = artifacts.require("SaveData");
+const RecordHealthCare = artifacts.require("RecordHealthcare");
 
-module.exports = function(deployer) {
-  deployer.deploy(PatientData);
-  deployer.deploy(SaveData);
-  deployer.link(PatientData, SaveData);
-  // deployer.deploy(MetaCoin);
+module.exports = function (deployer) {
+  deployer.deploy(RecordHealthCare);
 };
