@@ -1,7 +1,5 @@
 import React from "react";
 import "../assets/Hero.css";
-import image from "../assets/images/3.png";
-import CountUp from "react-countup";
 const Hero = () => {
   return (
     <section className="hero-wrapper">

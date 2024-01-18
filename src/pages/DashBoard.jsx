@@ -4,9 +4,8 @@ import Connect from '../components/Connect';
 const DashBoard = () => {
   return (
     <div>
-      <Connect/>
-      <h1>About Us</h1>
-      <p>This is the About page of our React Router test application.</p>
+      <h1>DashBoard</h1>
+      <p>This is the DashBoard page of our React Router test application.</p>
     </div>
   );
 };

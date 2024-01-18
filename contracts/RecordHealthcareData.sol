@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.19;
+pragma solidity ^0.8.19;
 
-contract RecordHealthCare {
+contract RecordHealthCareData {
     // Datatype user-defined
     struct Patients {
+        // The citizen identification card of Patient
+        string ic;
         // The name of the patient
         string name;
         // The patient's contact phone number
@@ -20,8 +22,6 @@ contract RecordHealthCare {
         string houseaddr;
         // The patient's blood group (e.g., "A+", "B-", etc.).
         string bloodgroup;
-        // Any allergirs that thw patient may have, such as food allergies or drug allergies
-        string allergies;
         // Information the patient is currently taking or has taken.
         string medication;
         // The name of the person to contact in case of an emergency.
@@ -34,6 +34,8 @@ contract RecordHealthCare {
         uint256 date;
     }
     struct Doctors {
+        // The citizen identification card of Doctor
+        string ic;
         // The name of the doctor
         string name;
         // The contact phone number of the doctor.
@@ -60,6 +62,7 @@ contract RecordHealthCare {
         string date;
         string time;
         // For holding medical information related to the appointment.
+
         string description;
         string diagnosis;
         string status;
@@ -104,6 +107,7 @@ contract RecordHealthCare {
 
     //Retrieve patient details from user sign up page and store the details into the blockchain
     function setDetailsPatient(
+        string memory _ic,
         string memory _name,
         string memory _phone,
         string memory _gender,
@@ -112,12 +116,12 @@ contract RecordHealthCare {
         string memory _weight,
         string memory _houseaddr,
         string memory _bloodgroup,
-        string memory _allergies,
         string memory _emergencyName,
         string memory _emergencyContact
     ) public {
         require(!isPatient[msg.sender], "This address is already a patient");
         Patients storage p = patients[msg.sender];
+        p.ic = _ic;
         p.name = _name;
         p.phone = _phone;
         p.gender = _gender;
@@ -126,7 +130,6 @@ contract RecordHealthCare {
         p.weight = _weight;
         p.houseaddr = _houseaddr;
         p.bloodgroup = _bloodgroup;
-        p.allergies = _allergies;
         p.emergencyName = _emergencyName;
         p.emergencyContact = _emergencyContact;
         p.addr = msg.sender;
@@ -136,8 +139,10 @@ contract RecordHealthCare {
         isApproved[msg.sender][msg.sender] = true;
         patientCount++;
     }
+
     // Allows patient to edit their existing record
     function editDetailsPatient(
+        string memory _ic,
         string memory _name,
         string memory _phone,
         string memory _gender,
@@ -146,11 +151,11 @@ contract RecordHealthCare {
         string memory _weight,
         string memory _houseaddr,
         string memory _bloodgroup,
-        string memory _allergies,
         string memory _emergencyName,
         string memory _emergencyContact
     ) public onlyPatient {
         Patients storage p = patients[msg.sender];
+        p.ic =_ic;
         p.name = _name;
         p.phone = _phone;
         p.gender = _gender;
@@ -159,7 +164,6 @@ contract RecordHealthCare {
         p.weight = _weight;
         p.houseaddr = _houseaddr;
         p.bloodgroup = _bloodgroup;
-        p.allergies = _allergies;
         p.emergencyName = _emergencyName;
         p.emergencyContact = _emergencyContact;
         p.addr = msg.sender;
@@ -167,6 +171,7 @@ contract RecordHealthCare {
 
     // Retrieve patient details from doctor registration page and store details into the blockchain
     function setDoctor(
+        string memory _ic,
         string memory _name,
         string memory _phone,
         string memory _gender,
@@ -176,6 +181,7 @@ contract RecordHealthCare {
     ) public {
         require(!isDoctor[msg.sender], " This address is already a doctor");
         Doctors storage d = doctors[msg.sender];
+        d.ic = _ic;
         d.name = _name;
         d.phone = _phone;
         d.gender = _gender;
@@ -191,6 +197,7 @@ contract RecordHealthCare {
 
     // Allows doctors to edit their existing profile
     function editDoctor(
+        string memory _ic,
         string memory _name,
         string memory _phone,
         string memory _gender,
@@ -199,6 +206,7 @@ contract RecordHealthCare {
         string memory _major
     ) public onlyDoctor {
         Doctors storage d = doctors[msg.sender];
+        d.ic = _ic;
         d.name = _name;
         d.phone = _phone;
         d.gender = _gender;
@@ -305,12 +313,13 @@ contract RecordHealthCare {
             string memory,
             string memory,
             string memory,
+            string memory,
             string memory
         )
     {
         require(isApproved[_address][msg.sender], "Access denied");
         Patients memory p = patients[_address];
-        return (p.name, p.phone, p.gender, p.dob, p.height, p.weight);
+        return (p.ic, p.name, p.phone, p.gender, p.dob, p.height, p.weight);
     }
 
     //Search patient details by entering a patient address(Only record owner or doctor with permission will be allowed to access)
@@ -324,7 +333,6 @@ contract RecordHealthCare {
             string memory,
             string memory,
             string memory,
-            string memory,
             string memory
         )
     {
@@ -333,7 +341,6 @@ contract RecordHealthCare {
         return (
             p.houseaddr,
             p.bloodgroup,
-            p.allergies,
             p.medication,
             p.emergencyName,
             p.emergencyContact
@@ -352,12 +359,13 @@ contract RecordHealthCare {
             string memory,
             string memory,
             string memory,
+            string memory,
             string memory
         )
     {
         require(isDoctor[_address]);
         Doctors memory d = doctors[_address];
-        return (d.name, d.phone, d.gender, d.dob, d.qualification, d.major);
+        return (d.ic, d.name, d.phone, d.gender, d.dob, d.qualification, d.major);
     }
 
     // Search appointment details by entering a patient address
