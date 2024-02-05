@@ -49,7 +49,7 @@ const MenuBar = () => {
           setWalletAddress(accounts[0]);
           console.log(accounts[0]);
         } else {
-          console.log("Conenct to MetaMask using the Connect button");
+          console.log("Connect to MetaMask using the Connect button");
         }
       } catch (err) {
         console.error(err.message);
@@ -61,10 +61,14 @@ const MenuBar = () => {
   };
 
   const shortenAddress = (address) => {
-    if (address.length > 10) {
-      return `${address.slice(0, 5)}...${address.slice(-5)}`;
-    } else {
-      return address;
+    try {
+      if (address.length > 10) {
+        return `${address.slice(0, 5)}...${address.slice(-5)}`;
+      } else {
+        return address;
+      }
+    } catch (err) {
+      alert("No account found on MetaMask");
     }
   };
   // addWalletListener là hàm được sử dụng để lắng nghe sự kiện "accountsChanged" từ MetaMask.
@@ -107,14 +111,13 @@ const MenuBar = () => {
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50"
             >
               <li>
-                <Link to="/dashboard">DashBoard</Link>
+                <Link to="/">DashBoard</Link>
               </li>
               <li>
-                <Link to="/dashboard">Record</Link>
+                <Link to="/list">Record</Link>
               </li>
-
               <li>
-                <Link to="/dashboard">Doctor</Link>
+                <Link to="/">Doctor</Link>
                 <ul className="p-2">
                   <li>
                     <Link to="/editDoctor" className="text-black">
@@ -137,12 +140,12 @@ const MenuBar = () => {
                 <Link to="/patient">Patient</Link>
                 <ul className="p-2">
                   <li>
-                    <Link to="/aprroveDoctor" className="text-black">
+                    <Link to="/approveDoctor" className="text-black">
                       Allow Access
                     </Link>
                   </li>
                   <li>
-                    <Link to="/allow" className="text-black">
+                    <Link to="/editPatient" className="text-black">
                       Edit Profile
                     </Link>
                   </li>
@@ -187,26 +190,26 @@ const MenuBar = () => {
               <Link to="/dashboard">DashBoard</Link>
             </li>
             <li>
-              <Link to="/dashboard">Record</Link>
+              <Link to="/list">Record</Link>
             </li>
 
             <li>
               <details>
                 <summary>Doctor</summary>
                 <ul className="p-2 z-50">
-                  <li>
-                    <Link to="/aprroveDoctor" className="text-black">
-                      Allow Access
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/allow" className="text-black">
+                <li>
+                    <Link to="/editDoctor" className="text-black">
                       Edit Profile
                     </Link>
                   </li>
                   <li>
-                    <Link to="/revokeAccess" className="text-black">
-                      Revoke Access
+                    <Link to="/makeAppoinment" className="text-black">
+                      Make Appointment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/updateAppoinment" className="text-black">
+                      Update Appointment
                     </Link>
                   </li>
                 </ul>
@@ -217,7 +220,7 @@ const MenuBar = () => {
                 <summary>Patient</summary>{" "}
                 <ul className="p-2 z-50">
                   <li>
-                    <Link to="/aprroveDoctor" className="text-black">
+                    <Link to="/approveDoctor" className="text-black">
                       Allow Access
                     </Link>
                   </li>
@@ -255,32 +258,37 @@ const MenuBar = () => {
               </details>
             </li>
           </ul>
-          <button id="btn-message" className="button-message" onClick={connectWallet}>
-          <div className="content-avatar">
-            <div className={`status-user ${isConnected ? "connected" : ""}`}></div>
-            <div className="avatar">
-              <svg
-                className="user-img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z"
-                ></path>
-              </svg>
+          <button
+            id="btn-message"
+            className="button-message"
+            onClick={connectWallet}
+          >
+            <div className="content-avatar">
+              <div
+                className={`status-user ${isConnected ? "connected" : ""}`}
+              ></div>
+              <div className="avatar">
+                <svg
+                  className="user-img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z"></path>
+                </svg>
+              </div>
             </div>
-          </div>
-          <div className="notice-content">
-            <div className="username">
-              <span className="user-text p-2"
-               >{shortenAddress(walletAddress)}</span>
+            <div className="notice-content">
+              <div className="username">
+                <span className="user-text p-2">
+                  {shortenAddress(walletAddress)}
+                </span>
+              </div>
+              <div className="lable-message">Account</div>
+              <div className="user-id">
+                <span style={{ fontWeight: "700" }}>Welcome to my website</span>
+              </div>
             </div>
-            <div className="lable-message">Account</div>
-            <div className="user-id">
-              <span style={{fontWeight:"700"}}>Welcome to my website</span>
-            </div>
-          </div>
-        </button>
+          </button>
         </div>
       </div>
     </div>

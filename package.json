@@ -18,6 +18,7 @@
     "react-bootstrap": "^1.5.2",
     "react-countup": "^6.5.0",
     "react-dom": "^17.0.2",
+    "react-responsive": "^9.0.2",
     "react-scripts": "^5.0.1",
     "recharts": "^2.10.3",
     "styled-components": "^6.1.8",
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "react-app-rewired": "^2.2.1",

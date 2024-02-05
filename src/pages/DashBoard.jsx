@@ -1,6 +1,5 @@
 // src/components/About.js
 import React from 'react';
-import Connect from '../components/Connect';
 const DashBoard = () => {
   return (
     <div>

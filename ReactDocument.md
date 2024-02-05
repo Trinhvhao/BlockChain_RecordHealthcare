@@ -64,3 +64,21 @@ Trong React có 2 kiểu chính của component: Functional Components và Class
 - Có state và các lifecycle methods như 'componentDidMount', 'componentDidUpdate', 'componentWillUnmount'.
 - Sử dụng khi cần quản lý state phức tạp hoặc khi cần sử dụng các lifecycle methods.
 - Trong class component, 'this' được sử dụng để tham chiếu đến đối tượng instance của class. Class component có lifecycle methods và có thể chứa trạng thái và phương thức instance.
+
+# Props
+- Trong React, props (viết tắt của "properties") là một cách để truyền dữ liệu từ component cha xuống component con. Props là các đối tượng chứa các thuộc tính và giá trị tương ứng được truyền từ component cha và không thay đổi được từ bên trong component con.
+
+# Routing trực tiếp
+- Một component được liên kết trực tiếp với một Route từ React Router. Khi bạn khai báo một Route và chỉ định component muốn render, component đó sẽ trở thành một component được routing trực tiếp
+Ex:   <Route exact path="/" component={Home} /> {/* Home là component được routing trực tiếp */}
+      <Route path="/about" component={About} /> {/* About cũng là component được routing trực tiếp */}
+- Trong đoạn mã trên, 'Home' và 'About' là các component được routing trực tiếp vì chúng được truyền vào các Route thông qua thuộc tính 'component'. Khi đường dẫn URl khớp với path tương ứng, React Router sẽ render component tương ứng. Điều này làm cho component này trở thành các điểm đầu vào trực tiếp từ URL
+- Một component không được routing trực tiếp là một component mà không được liên kết trực tiếp với một Route. Thay vào đó, nó có thể được sử dụng bên trong một component được routing trực tiếp hoặc bất kì component nào khác trong ứng dụng. Thường thì, các component không được routing trực tiếp sẽ được sử dụng để tái sử dụng logic, giao diện người dùng và chức năng trong các phần của ứng dụng khác nhau.
+
+# withRouter
+- 'withRouter' là một higher-order component (HOC) được cung cấp bởi 'react-router-dom' để truy cập các đối tượng 'history', 'location' và 'match' từ React Router trong các class components mà không phải là components được routing trược tiếp.
+- Bằng cách sử dụng withRouter, bạn có thể truy cập các props từ React Router trong các class components của mình một cách dễ dàng, cho phép bạn tương tác với lịch sử trình duyệt, thông tin về URL, và các params từ URL.
+- "Trong functional component, không thể sử dụng 'withRouter' trực tiếp như class component. Tuy nhiên, bạn có thể sử dụng React Hooks và các hook từ 'react-router-dom' để thực hiện các tác vụ tương tự
+- Thay vì sử dụng withRouter, bạn có thể sử dụng các hook như useParams, useLocation, và useHistory để truy cập các thông tin và chức năng của React Router trong functional component
+
+-->https://youtu.be/-gsuVECAJV8?si=AOwOkH5QGYDYGmqa

@@ -1,8 +1,9 @@
 // src/components/About.js
 import React from "react";
 import Hero from "../components/Hero";
-// import "../assets/HomePage.css"
+import Footer from "../components/Footer";
 import CountUp from "react-countup";
+import Accordion  from "../components/Accordion";
 import {
   Container0,
   Container1,
@@ -24,9 +25,9 @@ const HomePage = () => {
     <div>
       {/* <div className="white-gradient"></div> */}
       <Hero />
-      <Container0 className="container mt-4 ">
+      <Container0 className="container mt-4">
         <Title>
-          <H2 className="pt-5">Know what healthcare is up against.</H2>
+          <H2 className=" pt-5">Know what healthcare is up against.</H2>
           <p className="text-center m-auto">
             Here’s a preview of some of the new cybersecurity data uncovered by
             this year’s DBIR.
@@ -141,7 +142,7 @@ const HomePage = () => {
             </HeroContent>
             <HeroImage className=" col-xl-6 col-md-12 col-12">
               <img
-                src="https://www.actian.com/wp-content/uploads/2022/09/data-driven-risk-management-500x363.jpg"
+                src="https://www.datasciencecentral.com/wp-content/uploads/2022/04/AdobeStock_407673910.jpg"
                 alt=""
               />
             </HeroImage>
@@ -482,6 +483,7 @@ const HomePage = () => {
           </CardContent>
         </div>
       </FirstContent>
+      <div className="row">
       <Banner>
       <BannerBody>
         <BannerContent>
@@ -497,6 +499,32 @@ const HomePage = () => {
         </BannerButton>
       </BannerBody>
     </Banner>
+    </div>
+    <div>
+      <div className="header mx-auto w-2/3">
+        <H2 className="text-center">More information about Blockchain in Healthcare</H2>
+      </div>
+    <div className="p-4 w-9/12 bg-white border-double border-4 border-y-sky-300 rounded-xl mx-auto mb-5">
+      <Accordion title="What is Blockchain?" answer="Blockchain is a technology that stores and transmits information in a secure, transparent and immutable way. It operates as an encrypted distributed database system. The outstanding feature of blockchain is that data is stored in blocks, each block containing information about specific transactions or events. Each block connects to the previous block through a process called hashing, forming an immutable chain." />
+      <Accordion
+        title="How can blockchain help improve medical data management?"
+        answer="
+        Blockchain employs robust encryption and sophisticated authentication mechanisms to safeguard medical data. Each block of data is encrypted and linked to previous blocks, forming an immutable chain that allows updates only by adding new blocks. Thus, medical data on the blockchain is shielded from unauthorized access and alterations. Additionally, blockchain fosters transparency in medical data management by recording every transaction and change, ensuring all parties can review and verify activity history. Users retain complete control over their medical data through public and private keys, managing access securely. Furthermore, utilizing blockchain in medical data management reduces reliance on intermediaries, cutting transaction costs and streamlining data access, ultimately saving time and resources."
+      />
+      <Accordion
+        title="Is medical data stored on blockchain safe?"
+        answer="it provides a secure, transparent, and immutable system for storing and sharing medical data. With this technology, medical records can be encrypted and stored on data blocks, each block linked to the previous block using encryption. This helps prevent unauthorized modifications and protects data integrity. In addition, blockchain transparency helps improve the authentication and distribution process of medical information, helping to reduce dependence on intermediaries and increasing transparency in data sharing between medical institutions. healthcare and patients. Blockchain can also help enhance security and manage access to medical data, helping users control and protect their personal information safely and effectively. These benefits of blockchain offer great potential for improving the quality and efficiency of healthcare services, while enhancing patient satisfaction and trust in the healthcare system."
+      />
+      <Accordion
+        title="Is Blockchain suitable for all types of medical data??"
+        answer=": Blockchain có thể được áp dụng cho nhiều loại dữ liệu y tế, bao gồm lịch sử bệnh án, kết quả xét nghiệm, hồ sơ vắc xin và thông tin nhà thuốc. Tuy nhiên, việc áp dụng cần được xem xét kỹ lưỡng để đảm bảo tính bảo mật và tính khả thi của hệ thống.."
+      />
+    </div>
+    </div>
+    <div>
+      <footer><Footer></Footer></footer>
+   
+    </div>
     </div>
   );
 };

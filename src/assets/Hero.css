@@ -66,5 +66,7 @@
     border-color: #3898EC;
     outline: none;
   }
-
+body{
+  overflow-x: hidden;
+}
 

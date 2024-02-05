@@ -11,6 +11,12 @@ export const Title = styled.div`
     font-family: "Anton", sans-serif;
     letter-spacing: 1px;
   }
+  
+  @media screen and (max-width: 768px) {
+    h2{
+      font-size: 30px ;
+    }
+  }
 `;
 export const SecondContent = styled.div``;
 export const ThirdContent = styled.div``;
@@ -158,7 +164,7 @@ export const Banner = styled.div`
   display: flex;
   justify-content: center;
   margin: 48px auto;
-  width: 100%;
+  width: 90%;
   height: 350px;
   border-radius: 20px;`
   export const BannerBody = styled.div`

@@ -149,7 +149,7 @@ li {
   transition: var(--btn-transition);
 }
 .status-user.connected {
-    background-color: green; /* Màu khi đã kết nối */
+    background-color: #15ff00; /* Màu khi đã kết nối */
   } 
 .button-message:hover .status-user {
   width: 10px;

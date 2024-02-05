@@ -2,7 +2,7 @@
 
 // The line imports the compiled artifact of your smart contract. 
 // Truffle artifacts help in interacting with deployed contracts in a JavaScript environment
-const RecordHealthCare = artifacts.require("RecordHealthCare");
+const RecordHealthCare = artifacts.require("RecordHealthCareData");
 
 // This code sets up a new test suite using Mocha.
 // It declares variables for the smart contract instance and Ethereum addresses for the owner, patient, and docto
