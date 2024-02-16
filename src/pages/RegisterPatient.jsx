@@ -10,9 +10,9 @@ import {
   InputField,
   Button,
   H1,
-  Spinner,
-  SpinnerOverlay,
 } from "../assets/Register.styles";
+import { SpinnerOverlay, Spinner } from "../assets/index.styles";
+
 const RegisterPatient = () => {
   const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
   const navigate = useNavigate();

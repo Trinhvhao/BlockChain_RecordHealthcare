@@ -9,7 +9,7 @@ const Accordion = ({ title, answer }) => {
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full"
       >
-        <span>{title}</span>
+        <span className="font-bold">{title}</span>
         {/* {accordionOpen ? <span>-</span> : <span>+</span>} */}
         <svg
           className="fill-indigo-500 shrink-0 ml-8"

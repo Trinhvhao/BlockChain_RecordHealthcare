@@ -225,7 +225,7 @@ const MenuBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/allow" className="text-black">
+                    <Link to="/editPatient" className="text-black">
                       Edit Profile
                     </Link>
                   </li>

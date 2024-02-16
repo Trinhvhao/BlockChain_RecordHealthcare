@@ -9,9 +9,8 @@ import {
   InputField,
   Button,
   H1,
-  Spinner,
-  SpinnerOverlay
 } from "../assets/Register.styles";
+import { Spinner,SpinnerOverlay } from "../assets/index.styles";
 import Slider from "../components/Slide/SlideShow";
 const RegisterDoctor = () => {
   //address old contract
