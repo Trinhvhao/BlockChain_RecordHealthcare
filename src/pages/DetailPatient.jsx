@@ -11,12 +11,34 @@ import {
   Side4,
   Shadow,
 } from "../assets/Detail.styles";
-const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
 
-const RecordDetails = () => {
+const RecordDetailOfPatient = () => {
   const navigate = useNavigate();
   const [recordData, setRecordData] = useState(null);
   const { address } = useParams();
+
+  
+  // Convert Unix timestamp to Date Time
+  function convertUnixTimestampToDateTime(unixTimestamp) {
+    // Tạo một đối tượng Date từ unix timestamp (milisecond)
+    const dateTime = new Date(unixTimestamp * 1000);
+
+    // Lấy thông tin về ngày, tháng và năm
+    const date = dateTime.getDate();
+    const month = dateTime.getMonth() + 1; // Tháng bắt đầu từ 0
+    const year = dateTime.getFullYear();
+
+    // Lấy thông tin về giờ, phút và giây
+    const hours = dateTime.getHours();
+    const minutes = dateTime.getMinutes();
+    const seconds = dateTime.getSeconds();
+
+    // Format lại chuỗi ngày giờ
+    const formattedDateTime = `${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDateTime;
+}
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +58,9 @@ const RecordDetails = () => {
         const appointment = await record.methods
           .searchAppointment(address)
           .call({ from: accounts[0] });
-
+        const creationDate = await record.methods
+          .searchAppointmentDate(address)
+          .call({ from: accounts[0] });
         if (appointment[0].includes("0x00000000000")) appointment[0] = "";
 
         const profilePic =
@@ -63,11 +87,11 @@ const RecordDetails = () => {
           doctorname: appointment[1],
           date: appointment[2],
           time: appointment[3],
-          diagnosis: appointment[4],
-          prescription: appointment[5],
-          description: appointment[6],
-          status: appointment[7],
+          diagnosis: appointment[6],
+          description: appointment[5],
+          status: appointment[4],
           profilePic,
+          creationDate
         };
 
         setRecordData(data);
@@ -93,9 +117,10 @@ const RecordDetails = () => {
               <Shadow></Shadow>
             </Wrapper>
           </PyramidLoader>
-          <span className="text-3xl font-bold text-teal-300 animate-pulse">You don't have permission to view this record</span>
+          <span className="text-3xl font-bold text-teal-300 animate-pulse">
+            You don't have permission to view this record
+          </span>
         </div>
-        
       );
     }
 
@@ -227,21 +252,13 @@ const RecordDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <div>
-                <b className="text-gray-500">Prescription</b>
-                <div className="font-semibold">
-                  {recordData.prescription || "No Appointment"}
-                </div>
-              </div>
-              <div>
+            <div>
                 <b className="text-gray-500">Description</b>
                 <div className="font-semibold">
                   {recordData.description || "No Appointment"}
                 </div>
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="grid grid-cols-3 gap-4 mt-4">
               <div>
                 <b className="text-gray-500">Diagnosis</b>
                 <div className="font-semibold">
@@ -254,6 +271,12 @@ const RecordDetails = () => {
                   {recordData.status || "No Appointment"}
                 </div>
               </div>
+              <div>
+                <b className="text-gray-500">Creation Date</b>
+                <div className="font-semibold">
+                  {convertUnixTimestampToDateTime(recordData.creationDate) || "No Appointment"}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -264,4 +287,4 @@ const RecordDetails = () => {
   return <div>{renderDisplay()}</div>;
 };
 
-export default RecordDetails;
+export default RecordDetailOfPatient;

@@ -15,27 +15,19 @@ function TransactionsTable() {
     }
     
     useEffect(() => {
+        let isMounted = true; // Flag to track whether the component is mounted
+
         async function fetchTransactionsData() {
             try {
-                // Khởi tạo provider của Web3 với địa chỉ của Ganache
                 const web3 = new Web3('http://127.0.0.1:7575');
-
-                // Lấy số lượng block đã được mined
                 const latestBlockNumber = await web3.eth.getBlockNumber();
-
                 let transactionsData = [];
 
-                // Duyệt qua các block để lấy thông tin của các giao dịch
                 for (let blockNumber = latestBlockNumber; blockNumber >= 0; blockNumber--) {
-                    // Lấy thông tin của mỗi block
                     const block = await web3.eth.getBlock(blockNumber, true);
-
-                    // Lấy thông tin của các giao dịch trong block
                     const transactions = block.transactions;
 
-                    // Duyệt qua các giao dịch trong block
                     transactions.forEach(transaction => {
-                        // Thêm thông tin của giao dịch vào mảng
                         transactionsData.push({
                             from: transaction.from,
                             to: transaction.to,
@@ -46,58 +38,64 @@ function TransactionsTable() {
                     });
                 }
 
-                // Cập nhật state với dữ liệu giao dịch
-                setTransactions(transactionsData);
+                // Check if the component is still mounted before updating state
+                if (isMounted) {
+                    setTransactions(transactionsData);
+                }
             } catch (error) {
                 console.error("Error:", error);
             }
         }
 
-        // Gọi hàm để lấy dữ liệu của các giao dịch
         fetchTransactionsData();
-    }, []); // Tham số thứ hai truyền vào useEffect để đảm bảo hàm này chỉ chạy một lần sau khi component được render
 
+        // Cleanup function to run when the component is unmounted
+        return () => {
+            isMounted = false; // Update the flag when the component is unmounted
+        };
+    }, []);
     return (
         <div className="overflow-x-auto">
             <table className="table table-xl table-pin-rows table-pin-cols">
                 <thead>
                     <tr>
                         <th></th>
-                        <td>From Address</td>
-                        <td>To Address</td>
-                        <td>Gas</td>
-                        <td>Value</td>
-                        <td>Mined Block</td>
+                        <th>From Address</th>
+                        <th>To Address</th>
+                        <th>Gas</th>
+                        <th>Value</th>
+                        <th>Mined Block</th>
                         <th></th>
                     </tr>
                 </thead>
-   
+                <tbody> {/* Add tbody */}
                     {transactions.map((transaction, index) => (
                         <tr key={index}>
-                            <th>{index + 1}</th>
+                            <td>{index + 1}</td>
                             <td>{shortenAddress(transaction.from)}</td>
                             <td>{shortenAddress(transaction.to)}</td>
                             <td>{transaction.gas}</td>
                             <td>{transaction.value}</td>
                             <td>{transaction.minedBlock}</td>
-                            <th>{index + 1}</th>
+                            <td>{index + 1}</td>
                         </tr>
                     ))}
-        
+                </tbody>
                 <tfoot>
                     <tr>
                         <th></th>
-                        <td>From Address</td>
-                        <td>To Address</td>
-                        <td>Gas</td>
-                        <td>Value</td>
-                        <td>Mined Block</td>
+                        <th>From Address</th>
+                        <th>To Address</th>
+                        <th>Gas</th>
+                        <th>Value</th>
+                        <th>Mined Block</th>
                         <th></th>
                     </tr>
                 </tfoot>
             </table>
         </div>
     );
+    
 }
 
 export default TransactionsTable;

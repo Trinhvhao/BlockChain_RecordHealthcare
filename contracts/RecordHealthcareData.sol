@@ -363,7 +363,8 @@ contract RecordHealthCareData {
             string memory
         )
     {
-        require(isDoctor[_address]);
+         require(isDoctor[msg.sender], "Only doctors can access this information");
+        require(isDoctor[_address], "Invalid doctor address");
         Doctors memory d = doctors[_address];
         return (d.ic, d.name, d.phone, d.gender, d.dob, d.qualification, d.major);
     }

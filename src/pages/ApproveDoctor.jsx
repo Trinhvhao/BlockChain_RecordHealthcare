@@ -4,7 +4,7 @@ import contractABI from '../contracts/RecordHealthCareData.json';
 import { useNavigate } from "react-router-dom";
 import { Spinner, SpinnerOverlay } from "../assets/index.styles";
 
-const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
 
 const ApproveDoctor = () => {
   const navigate = useNavigate();

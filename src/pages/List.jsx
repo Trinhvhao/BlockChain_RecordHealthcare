@@ -4,7 +4,7 @@ import RecordHealthCareData from "../contracts/RecordHealthCareData.json";
 import { Input, Container } from "../assets/List.styles";
 import { useMediaQuery } from "react-responsive";
 import {useNavigate} from "react-router-dom";
-const addressContract = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+const addressContract = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
 
 const GetDataComponent = () => {
   const [web3, setWeb3] = useState(null);
@@ -110,8 +110,12 @@ const GetDataComponent = () => {
  doctorAddress.toLowerCase().includes(query.toLowerCase())
 );
 
-const viewRecord = (address) => {
-  navigate(`/record/${address}`);
+const viewRecordPatient = (address) => {
+  navigate(`/recordPatient/${address}`);
+};
+
+const viewRecordDoctor = (address) => {
+  navigate(`/recordDoctor/${address}`);
 };
   return (
     <div style={{ textAlign: "center", fontSize: "2rem" }}>
@@ -126,7 +130,7 @@ const viewRecord = (address) => {
                             <img src="https://img.freepik.com/free-vector/sick-man-wearing-protective-face-mask_53876-97821.jpg?w=740&t=st=1706283195~exp=1706283795~hmac=91fc49f58a58b1032153edf49d2165d3a5251aed25cca00e8a4b4e32b4c3dd4e" alt="" className="h-20 w-20 rounded-full" />
                             <div className="flex flex-column items-center">
                                 <h3 className="text-sm md:text-xl font-black">{shortenAddress(patientAddress)}</h3>
-                                <button onClick={() => viewRecord(patientAddress)} className="mt-3 text-lg md:text-xl lg:text-2xl">View Record</button>
+                                <button onClick={() => viewRecordPatient(patientAddress)} className="mt-3 text-lg md:text-xl lg:text-2xl">View Record</button>
                             </div>
                         </div>
                     ))}
@@ -142,7 +146,7 @@ const viewRecord = (address) => {
                             <img src="https://i.pinimg.com/564x/64/98/d1/6498d17eb4d44ea066029972208dbc70.jpg" alt="" className="h-20 w-20 rounded-full" />
                             <div className="flex flex-column items-center">
                                 <h3 className="text-sm md:text-xl font-black">{shortenAddress(doctorAddress)}</h3>
-                                <button onClick={() => viewRecord(doctorAddress)} className="mt-3 text-lg md:text-xl lg:text-2xl">View Record</button>
+                                <button onClick={() => viewRecordDoctor(doctorAddress)} className="mt-3 text-lg md:text-xl lg:text-2xl">View Record</button>
                             </div>
                         </div>
                     ))}

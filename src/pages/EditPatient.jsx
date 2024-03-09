@@ -16,7 +16,7 @@ const BgImage ={
   backgroundImage: 'url("https://images.hdqwalls.com/download/internet-technology-hg-3840x2400.jpg")',
 }
 const EditPatient = () => {
-    const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+    const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
   

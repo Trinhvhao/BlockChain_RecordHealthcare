@@ -14,10 +14,9 @@ import {
 import { SpinnerOverlay, Spinner } from "../assets/index.styles";
 
 const RegisterPatient = () => {
-  const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+  const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
   const [state, setState] = useState({
     ic: "",
     name: "",
@@ -34,6 +33,7 @@ const RegisterPatient = () => {
     errorMessage: "",
   });
 
+
   useEffect(() => {
     setState((prevState) => ({ ...prevState, gender: "Male" }));
   }, []); // Empty dependency array, runs once after initial render
@@ -42,6 +42,9 @@ const RegisterPatient = () => {
     setState({ ...state, gender: e.target.value });
   };
 
+  const BgImage ={
+    backgroundImage: 'url("https://images.alphacoders.com/123/1239282.png")',
+  };
   const onSubmit = async (event) => {
     event.preventDefault();
 
@@ -168,7 +171,7 @@ const RegisterPatient = () => {
           puts you in control of your medical information securely.
         </p>
       </Header>
-      <InputPost>
+      <InputPost style={BgImage}>
         <Card>
           {/* error được đặt là true nếu có lỗi và thông báo lỗi sẽ được hiển thị. */}
           <form

@@ -125,12 +125,12 @@ const MenuBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/makeAppoinment" className="text-black">
+                    <Link to="/makeAppointment" className="text-black">
                       Make Appointment
                     </Link>
                   </li>
                   <li>
-                    <Link to="/updateAppoinment" className="text-black">
+                    <Link to="/updateAppointment" className="text-black">
                       Update Appointment
                     </Link>
                   </li>
@@ -203,12 +203,12 @@ const MenuBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/makeAppoinment" className="text-black">
+                    <Link to="/makeAppointment" className="text-black">
                       Make Appointment
                     </Link>
                   </li>
                   <li>
-                    <Link to="/updateAppoinment" className="text-black">
+                    <Link to="/updateAppointment" className="text-black">
                       Update Appointment
                     </Link>
                   </li>

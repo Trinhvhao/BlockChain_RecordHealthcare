@@ -6,7 +6,7 @@ import TransactionsTable from "../components/TransactionTable";
 const DashBoard = () => {
   const [patientCount, setPatientCount] = useState(0);
   const [doctorCount, setDoctorCount] = useState(0);
-  const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+  const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
   const Web3 = require("web3");
   useEffect(() => {
     async function fetchData() {
@@ -32,13 +32,11 @@ const DashBoard = () => {
 
     fetchData();
   }, []); // dependencies rỗng để useEffect chỉ chạy một lần khi component được mount
-
   return (
     <div>
       <div className="container mt-5">
         <div className="main-top  flex items-center justify-between">
           <h1 className="text-3xl font-bold mb-3">Healthcare's data</h1>
-          <button className="btn btn-neutral">Get data</button>
         </div>
         <div className="users grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="card w-100 bg-base-100 shadow-xl">
@@ -109,7 +107,7 @@ const DashBoard = () => {
                 </div>
               </h2>
               <p className="text-center text-5xl">
-                <CountUp start={0} end={74} duration={15}></CountUp>
+                <CountUp start={0} end={0} duration={15}></CountUp>
               </p>
               <div className="card-actions justify-end">
                 <div className="badge badge-outline">People</div>
@@ -134,7 +132,7 @@ const DashBoard = () => {
                 </div>
               </h2>
               <p className="text-center text-5xl">
-                <CountUp start={0} end={74} duration={15}></CountUp>
+                <CountUp start={0} end={0} duration={15}></CountUp>
               </p>
               <div className="card-actions justify-end">
                 <div className="badge badge-outline">People</div>
@@ -144,9 +142,7 @@ const DashBoard = () => {
         </div>
         <section className=" mt-8">
           <div className="overflow-x-auto">
-           
              <TransactionsTable/>
-           
           </div>
         </section>
       </div>

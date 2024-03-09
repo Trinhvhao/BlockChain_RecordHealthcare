@@ -15,7 +15,7 @@ import Slider from "../components/Slide/SlideShow";
 const RegisterDoctor = () => {
   //address old contract
   // 0x0A764BD8d60d7F2aa02B7b00A368C740bD5a6EDe
-  const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+  const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -36,6 +36,9 @@ const RegisterDoctor = () => {
     loading: false,
   });
 
+  const BgImage ={
+    backgroundImage: 'url("https://images.alphacoders.com/123/1239282.png")',
+  };
   const onSubmit = async (event) => {
     event.preventDefault();
 
@@ -126,7 +129,7 @@ const RegisterDoctor = () => {
           professional information effectively.
         </p>
       </Header>
-      <InputPost>
+      <InputPost style={BgImage}>
         <Card>
           {/* error được đặt là true nếu có lỗi và thông báo lỗi sẽ được hiển thị. */}
           <form

@@ -17,7 +17,7 @@ const BgImage ={
   backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1681843039768-0e22b7a031d5?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
 }
 const RegisterDoctor = () => {
-  const contractAddress = "0xdB1c78983b2E6F74bd00CdC5DEf1D5075deD6f44";
+  const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
