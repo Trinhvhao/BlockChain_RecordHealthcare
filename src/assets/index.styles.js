@@ -24,7 +24,7 @@ export const SpinnerOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensure it's above other elements */
+  z-index: 99999999; /* Ensure it's above other elements */
 `;
 export const Spinner = styled.div`
   width: 80px;
@@ -33,13 +33,14 @@ export const Spinner = styled.div`
   --clr-alpha: rgb(127, 207, 255, 0.1);
   animation: ${rotateAnimation} 2s infinite linear;
   transform-style: preserve-3d;
-
+  z-index: 1000;
   div {
     background-color: var(--clr-alpha);
     height: 100%;
     position: absolute;
     width: 100%;
     border: 5px solid var(--clr);
+    
   }
 
   div:nth-of-type(1) {

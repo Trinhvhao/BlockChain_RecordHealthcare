@@ -27,7 +27,7 @@ const ApproveDoctor = () => {
       await record.methods.givePermission(doctorAddress).send({ from: accounts[0] });
       alert("Doctor approved successfully!");
       console.log("Transaction sent successfully");
-      navigate(`/record/${accounts[0]}`);
+      navigate(`/list`);
     } catch (err) {
       console.error("Error:", err);
       alert("Failed to approve doctor. Check console for details.");
@@ -39,92 +39,92 @@ const ApproveDoctor = () => {
   return (
     <div className="container bg-teal-200">
       <h1 className="text-center mt-5 mb-4 text-6xl font-bold pt-5 text-black">Approve Doctor</h1>
-      <div class="first-content container mt-5">
-        <div class="row">
-          <div class="col-md-4 mb-4 text-center text-black">
+      <div className="first-content container mt-5">
+        <div className="row">
+          <div className="col-md-4 mb-4 text-center text-black">
           <img
               src="https://cdn-icons-png.flaticon.com/256/190/190411.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5 ">Provide Only Necessary Access</h3>
+            <h3 className="h5 ">Provide Only Necessary Access</h3>
             <p>
             Clearly define the purpose and scope of the access the physician needs to perform medical work.
             </p>
           </div>
 
-          <div class="col-md-4 mb-4 text-center text-black">
+          <div className="col-md-4 mb-4 text-center text-black">
           <img
               src="https://cdn-icons-png.flaticon.com/256/190/190411.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5">Identity Verification</h3>
+            <h3 className="h5">Identity Verification</h3>
             <p>
             Before granting access, ensure that the doctor's identity has been verified and fully registered in the blockchain system.
             </p>
           </div>
-          <div class="col-md-4 mb-4 text-center text-black">
+          <div className="col-md-4 mb-4 text-center text-black">
           <img
               src="https://cdn-icons-png.flaticon.com/256/190/190411.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5">Keeping Data Confidential</h3>
+            <h3 className="h5">Keeping Data Confidential</h3>
             <p>
             Ensure that patient personal and medical information is securely encrypted and protected on the blockchain.
             </p>
           </div>
 
-          <div class="col-md-4 mb-4 text-center text-black">
+          <div className="col-md-4 mb-4 text-center text-black">
             <img
               src="https://cdn-icons-png.flaticon.com/256/1828/1828843.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5">Do Not Share Passwords</h3>
+            <h3 className="h5">Do Not Share Passwords</h3>
             <p>
             Never share your password or login information with anyone, including your doctor, to avoid security risks.
             </p>
           </div>
 
-          <div class="col-md-4 mb-4 text-center text-black">
+          <div className="col-md-4 mb-4 text-center text-black">
             <img
               src="https://cdn-icons-png.flaticon.com/256/1828/1828843.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5">Do Not Automatically Accept Requests</h3>
+            <h3 className="h5">Do Not Automatically Accept Requests</h3>
             <p>
             Avoid automatically accepting access requests without verifying the physician's identity or intent.
             </p>
           </div>
 
-          <div class="col-md-4 mb-4 text-center text-black">
+          <div className="col-md-4 mb-4 text-center text-black">
             <img
               src="https://cdn-icons-png.flaticon.com/256/1828/1828843.png"
               alt=""
               loading="lazy"
               width="48"
               height="48"
-              class="img-fluid mb-3"
+              className="img-fluid mb-3"
             />
-            <h3 class="h5">No Unnecessary Access Registration</h3>
+            <h3 className="h5">No Unnecessary Access Registration</h3>
             <p>
             Please avoid applying for access beyond the scope of the physician's necessary medical work, to protect patient privacy
             </p>

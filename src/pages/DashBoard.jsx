@@ -6,6 +6,8 @@ import TransactionsTable from "../components/TransactionTable";
 const DashBoard = () => {
   const [patientCount, setPatientCount] = useState(0);
   const [doctorCount, setDoctorCount] = useState(0);
+  const [appointmentCount, setAppointmentCount] = useState(0);
+  const [permissionCount, setPermissionCount] = useState(0);
   const contractAddress = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
   const Web3 = require("web3");
   useEffect(() => {
@@ -16,14 +18,21 @@ const DashBoard = () => {
           contractABI.abi,
           contractAddress
         );
-        const accounts = await tempWeb3.eth.getAccounts();
-
+        // Lấy số lượng bệnh nhân từ contract
         const patientCount = await contract.methods.getPatientCount().call();
         setPatientCount(patientCount);
 
         // Lấy số lượng bác sĩ từ contract
         const doctorCount = await contract.methods.getDoctorCount().call();
         setDoctorCount(doctorCount);
+
+        // Lấy số lượng cuộc hẹn từ contract
+        const appointmentCount = await contract.methods.getAppointmentCount().call();
+        setAppointmentCount(appointmentCount);
+
+        // Lấy số lượng địa chỉ được cho phép truy cập 
+        const permissionCount = await contract.methods.getPermissionGrantedCount().call();
+        setPermissionCount(permissionCount);
       } catch (error) {
         console.error("Error fetching data from contract:", error);
         // Xử lý lỗi ở đây
@@ -31,7 +40,7 @@ const DashBoard = () => {
     }
 
     fetchData();
-  }, []); // dependencies rỗng để useEffect chỉ chạy một lần khi component được mount
+  }, [Web3]); // dependencies rỗng để useEffect chỉ chạy một lần khi component được mount
   return (
     <div>
       <div className="container mt-5">
@@ -107,7 +116,11 @@ const DashBoard = () => {
                 </div>
               </h2>
               <p className="text-center text-5xl">
-                <CountUp start={0} end={0} duration={15}></CountUp>
+                <CountUp
+                  start={0}
+                  end={appointmentCount}
+                  duration={15}
+                ></CountUp>
               </p>
               <div className="card-actions justify-end">
                 <div className="badge badge-outline">People</div>
@@ -132,7 +145,7 @@ const DashBoard = () => {
                 </div>
               </h2>
               <p className="text-center text-5xl">
-                <CountUp start={0} end={0} duration={15}></CountUp>
+                <CountUp start={0} end={permissionCount} duration={15}></CountUp>
               </p>
               <div className="card-actions justify-end">
                 <div className="badge badge-outline">People</div>
@@ -142,7 +155,7 @@ const DashBoard = () => {
         </div>
         <section className=" mt-8">
           <div className="overflow-x-auto">
-             <TransactionsTable/>
+            <TransactionsTable />
           </div>
         </section>
       </div>

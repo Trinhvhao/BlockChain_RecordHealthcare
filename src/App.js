@@ -13,7 +13,6 @@ import RevokeAccess from "./pages/RevokeAccess";
 import EditPatient from "./pages/EditPatient";
 import EditDoctor from "./pages/EditDoctor";
 import MakeAppointment from "./pages/MakeAppointment";
-import UpdateAppointment from "./pages/UpdateAppointment";
 import DetailDoctor from "./pages/DetailDoctor";
 class App extends Component {
   render(){
@@ -33,7 +32,6 @@ class App extends Component {
         <Route path="/editPatient" element={<EditPatient/>} exact></Route>
         <Route path="/editDoctor" element={<EditDoctor/>} exact></Route>
         <Route path="/makeAppointment" element={<MakeAppointment/>} exact></Route>
-        <Route path="/updateAppointment" element={<UpdateAppointment/>} exact></Route>
         <Route path="/recordDoctor/:address" element={<DetailDoctor/>} exact></Route>
       </Routes>
     </div>

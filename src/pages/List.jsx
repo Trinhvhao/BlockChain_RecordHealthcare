@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../assets/Appointment.css";
 import Web3 from "web3";
 import RecordHealthCareData from "../contracts/RecordHealthCareData.json";
 import { Input, Container } from "../assets/List.styles";
@@ -6,100 +7,98 @@ import { useMediaQuery } from "react-responsive";
 import {useNavigate} from "react-router-dom";
 const addressContract = "0xf2e3c8e8119582D480934D95Aa0716637D4B8715";
 
-const GetDataComponent = () => {
-  const [web3, setWeb3] = useState(null);
-  const [contract, setContract] = useState(null);
-  const [patientList, setPatientList] = useState([]);
-  const [doctorList, setDoctorList] = useState([]);
-  const [query, setQuery] = useState('');
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 767px)" });
-  const navigate = useNavigate();
-  useEffect(() => {
-    const initWeb3 = async () => {
-      if (window.ethereum) {
-        // Use MetaMask provider
-        const newWeb3 = new Web3(window.ethereum);
-        try {
+ const GetDataComponent = () => {
+   const [web3, setWeb3] = useState(null);
+   const [contract, setContract] = useState(null);
+   const [patientList, setPatientList] = useState([]);
+   const [doctorList, setDoctorList] = useState([]);
+   const [query, setQuery] = useState('');
+   const isSmallScreen = useMediaQuery({ query: "(max-width: 767px)" });
+   const navigate = useNavigate();
+   useEffect(() => {
+     const initWeb3 = async () => {
+       if (window.ethereum) {
+     // Use MetaMask provider
+       const newWeb3 = new Web3(window.ethereum);
+       try {
           // Request account access
           await window.ethereum.request({
             method: "eth_requestAccounts",
           });
-          setWeb3(newWeb3);
-        } catch (error) {
+           setWeb3(newWeb3);
+                 } catch (error) {
           console.error("User denied account access");
-        }
-      } else if (window.web3) {
-        // Use legacy web3 provider
-        setWeb3(new Web3(window.web3.currentProvider));
-      } else {
-        console.error(
+         }
+       } else if (window.web3) {
+       // Use legacy web3 provider     
+           setWeb3(new Web3(window.web3.currentProvider));       } 
+           else {        
+             console.error(
           "No Ethereum provider detected. Please install MetaMask."
         );
-      }
-    };
+      }    
+     };
 
-    // Initialize Web3
-    initWeb3();
+     // Initialize Web3
+     initWeb3();
   }, []);
 
   useEffect(() => {
-    const initContract = async () => {
-      if (web3) {
-        const newContract = new web3.eth.Contract(
-          RecordHealthCareData.abi,
-          addressContract
+     const initContract = async () => {
+       if (web3) {
+         const newContract = new web3.eth.Contract(
+           RecordHealthCareData.abi,
+         addressContract
         );
         setContract(newContract);
-      } else {
+       } else {
         console.log("No Web3 provider detected.");
-      }
-    };
+       }
+     };
 
-    // Initialize the smart contract
-    initContract();
-  }, [web3]);
-
-  // get data patient from smart contract
-  useEffect(() => {
-    const fetchPatients = async () => {
+     // Initialize the smart contract
+     initContract();
+   }, [web3]);
+   // get data patient from smart contract
+   useEffect(() => {
+       const fetchPatients = async () => {
       if (contract) {
         try {
           // Call the getPatients function from the smart contract
           const patients = await contract.methods.getPatients().call();
-          setPatientList(patients);
-        } catch (error) {
-          console.error("Error fetching patient data:", error);
+           setPatientList(patients);
+         } catch (error) {
+           console.error("Error fetching patient data:", error);
         }
       }
-    };
+   };
 
     // Fetch patient data
-    fetchPatients();
+     fetchPatients();
   }, [contract]);
 
-  // get data doctor from smart contract
-  useEffect(() =>{
-    const fetchDoctors = async () => {
-      if (contract) {
-        try {
-          // Call the getPatients function from the smart contract
-          const doctors = await contract.methods.getDoctors().call();
-          setDoctorList(doctors);
-        } catch (error) {
-          console.error("Error fetching doctor data:", error);
-        }
-      }
-    };
-    fetchDoctors();
-  }, [contract]);
+   // get data doctor from smart contract
+   useEffect(() =>{
+     const fetchDoctors = async () => {
+      if (contract) {      
+           try {
+           // Call the getPatients function from the smart contract          
+            const doctors = await contract.methods.getDoctors().call();
+           setDoctorList(doctors);         } catch (error) {
+           console.error("Error fetching doctor data:", error);
+         }
+       }
+     };
+     fetchDoctors();
+   }, [contract]);
 
-  //function to shorten Ethereum address
-  const shortenAddress = (address) => {
-    if (isSmallScreen && address && address.length > 14) {
-      return `${address.slice(0, 6)}...${address.slice(-8)}`;
-    }
-    return address;
-  };
+   //function to shorten Ethereum address
+   const shortenAddress = (address) => {
+     if (isSmallScreen && address && address.length > 14) {
+       return `${address.slice(0, 6)}...${address.slice(-8)}`;
+     }
+     return address;
+   };
 
   // Filter patients based on search input
   const filteredPatients = patientList.filter((patientAddress) =>

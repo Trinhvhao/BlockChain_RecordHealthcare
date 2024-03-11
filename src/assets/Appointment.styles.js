@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 
 // Container styled component
 export const FormContainer = styled.form`

@@ -47,7 +47,7 @@ const RecordDetailOfDoctor = () => {
         const doctorDetails = await record.methods
           .searchDoctor(address)
           .call({ from: accounts[0] });
-
+        const creationDate = await record.methods.searchDoctorDate(address).call({from:accounts[0]});
         const profilePic =
           doctorDetails[3] === "Male"
             ? "https://cdn-icons-png.flaticon.com/128/387/387561.png"
@@ -61,6 +61,7 @@ const RecordDetailOfDoctor = () => {
           qualification: doctorDetails[5],
           major: doctorDetails[6],
           profilePic,
+          creationDate
         };
 
         setRecordData(data);

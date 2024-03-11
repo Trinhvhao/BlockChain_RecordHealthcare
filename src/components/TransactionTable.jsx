@@ -16,17 +16,17 @@ function TransactionsTable() {
     
     useEffect(() => {
         let isMounted = true; // Flag to track whether the component is mounted
-
+    
         async function fetchTransactionsData() {
             try {
                 const web3 = new Web3('http://127.0.0.1:7575');
                 const latestBlockNumber = await web3.eth.getBlockNumber();
                 let transactionsData = [];
-
+    
                 for (let blockNumber = latestBlockNumber; blockNumber >= 0; blockNumber--) {
                     const block = await web3.eth.getBlock(blockNumber, true);
                     const transactions = block.transactions;
-
+    
                     transactions.forEach(transaction => {
                         transactionsData.push({
                             from: transaction.from,
@@ -37,7 +37,6 @@ function TransactionsTable() {
                         });
                     });
                 }
-
                 // Check if the component is still mounted before updating state
                 if (isMounted) {
                     setTransactions(transactionsData);
@@ -46,14 +45,15 @@ function TransactionsTable() {
                 console.error("Error:", error);
             }
         }
-
+    
         fetchTransactionsData();
-
+    
         // Cleanup function to run when the component is unmounted
         return () => {
             isMounted = false; // Update the flag when the component is unmounted
         };
-    }, []);
+    }, []); // Include Web3 in the dependency array
+    
     return (
         <div className="overflow-x-auto">
             <table className="table table-xl table-pin-rows table-pin-cols">
@@ -68,7 +68,7 @@ function TransactionsTable() {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody> {/* Add tbody */}
+                <tbody>
                     {transactions.map((transaction, index) => (
                         <tr key={index}>
                             <td>{index + 1}</td>

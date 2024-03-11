@@ -130,9 +130,6 @@ const MenuBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/updateAppointment" className="text-black">
-                      Update Appointment
-                    </Link>
                   </li>
                 </ul>
               </li>
@@ -207,11 +204,7 @@ const MenuBar = () => {
                       Make Appointment
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/updateAppointment" className="text-black">
-                      Update Appointment
-                    </Link>
-                  </li>
+              
                 </ul>
               </details>
             </li>
