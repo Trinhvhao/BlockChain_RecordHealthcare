@@ -11,11 +11,10 @@
 ### create account in metamask
 1. copy one of the private key present in Ganache app
 2. Import the private key in the metamask to create account
-3. change `not connected` to `connected` 
+3. change `Not connected` to `Connected` 
 
-![image 4](./images/4.png)
 ### To run the project
-`npm update` then `npm start` And now you can start saving the patient data.
+Run this command: `cd blockchain` then `npm start` And now you can start saving the patient data.
 ### Idea behind this project
 
 Blockchain based Database to secure patient data and ensure privacy
